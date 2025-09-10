@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KEY ABIDJAN</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+
+<!-- Section cover -->
+<section id="cover">
+    <div class="overlay">
+        <h1>KEY ABIDJAN</h1>
+        <h3>CENTRE D'AFFAIRES <br>CONSEIL AUX ENTREPRISES</h3>
+        <p>Là où le savoir faire étranger renforce l'innovation locale</p>
+        <div class="arrow">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+</section>
+
+<!-- Section description -->
+<section id="description">
+    <h2>Description de l'événement</h2>
+    <p>
+        Le KEY ABIDJAN Business Circle est une rencontre unique qui réunit les acteurs de l'accompagnement des TPE et la diaspora. 
+        Venez découvrir des opportunités, échanger des idées et construire des collaborations fructueuses.
+    </p>
+    <br>
+    <img src="images/team.jpg" alt="team" class="team">
+</section>
+
+<!-- Section infos -->
+<section id="infos">
+    <div class="card">
+        <i class="fas fa-calendar-alt"></i>
+        <h4>Date</h4>
+        <p>Samedi 20 Septembre 2025</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-clock"></i>
+        <h4>Heure</h4>
+        <p>09h00</p>
+    </div>
+    <div class="card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>Lieu</h4>
+        <p>Abidjan, Côte d'Ivoire</p>
+    </div>
+    
+</section>
+
+<!-- Section localisation -->
+<section id="localisation">
+    <h2>Où nous trouver</h2>
+    <br>
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.733024797491!2d-3.876!3d5.336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNfCkMyBCw4A3!5e0!3m2!1sfr!2sci!4v0000000000" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</section>
+
+<!-- Section formulaire -->
+<section id="formulaire">
+    <div class="info">
+        <p><i class="fas fa-info-circle"></i> Apres validation vous serez rediriger automatiquement vers whatsapp veuillez cliquer sur 
+            "envoyer" pour validation. <br> Après confirmation vous recevrez votre invitation numérique
+            veuillez ne la communiquer a personne.
+        </p>
+    </div>
+    <br>
+    <br>
+    <h2>Confirmez votre présence</h2>
+    <form id="presenceForm">
+        <input type="text" id="nom" placeholder="Nom et prenom" required>
+        <input type="text" id="whatsapp" placeholder="Numéro WhatsApp" required>
+        <input type="email" id="email" placeholder="E-mail (optionnel)">
+        <input type="text" id="ville" placeholder="Ville / Quartier">
+        <label for="presence">Votre présence</label>
+        <select name="presence" id="presence" required>
+            <option value="">-- Sélectionnez un choix --</option>
+            <option value="je serai présent(e)">Je serai présent(e)</option>
+            <option value="je ne pourrai pas venir">Je ne pourrais pas venir</option>
+            <option value="je vous reviendrais">Je vous reviendrais</option>
+        </select>
+
+        <button type="submit">Confirmer via Whatsapp</button>
+    </form>
+    <div id="confirmation" class="hidden">
+        <p>Merci ! Voulez-vous recevoir votre carte d'invitation maintenant ?</p>
+        <button id="yesBtn">Oui</button>
+        <button id="noBtn">Non</button>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 KEY ABIDJAN. Tous droits réservés.</p>
+</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
