@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Générer lien WhatsApp avec message pré-rempli
         const message = `Bonjour, je confirme ma présence à l'événement KEY ABIDJAN.\n\nNom: ${userData.nom}\nWhatsApp: ${userData.whatsapp}\nEmail: ${userData.email || 'N/A'}\nVille: ${userData.ville}\nRéponse: ${userData.presence}`;
-        const phoneNumber = "22500000000"; // Remplacer par le numéro WhatsApp officiel de réception
+        const phoneNumber = "2250797484729"; // Remplacer par le numéro WhatsApp officiel de réception
         const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
         // Ouvrir WhatsApp dans un nouvel onglet
@@ -70,3 +70,4 @@ function generatePDF(data) {
 
     doc.save(`Carte_${data.nom.replace(/\s+/g, "_")}.pdf`);
 }
+
