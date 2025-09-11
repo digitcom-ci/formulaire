@@ -99,7 +99,7 @@ body {
     margin-bottom: 10px;
 }
 
-#infos .card P {
+#infos .card p {
     font-size: 1rem;
     color: #000;
     margin-bottom: 10px;
@@ -109,7 +109,7 @@ body {
 }
 
 .team {
-    width: 400px;
+    width: 300px;
     margin: auto;
     height: 300px;
     border-radius: 8px;
@@ -119,7 +119,7 @@ body {
     background: rgba(255, 25, 25, 0.5);
     padding: 20px;
     border-radius: 10px;
-    width: 400px;
+    width: 300px;
     margin: auto;
     text-align: center;
     /* Ajout de l'ombre */
@@ -131,7 +131,7 @@ body {
 
 /* Formulaire */
 #formulaire form {
-    max-width: 400px;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -184,3 +184,4 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
