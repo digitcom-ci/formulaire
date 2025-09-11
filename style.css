@@ -46,7 +46,7 @@ body {
 }
 
 #message {
-  width: 320px;
+  width: 280px;
   min-height: 100px;
   max-height: 100px;
   resize: none; /* empêche de tirer la zone */
@@ -226,7 +226,7 @@ label {
     margin: 10px 20px;  
 }
 select {
-    width: 320px;
+    width: 280px;
     padding: 10px;
     margin-top: 8px;
     border: 1px solid #ccc;
@@ -243,4 +243,5 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
 
