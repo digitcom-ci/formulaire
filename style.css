@@ -148,7 +148,7 @@ body {
 }
 
 .team {
-    width: 400px;
+    width: 350px;
     margin: auto;
     height: auto;
     border-radius: 8px;
@@ -165,7 +165,7 @@ body {
     background: #e41e0f;
     padding: 20px;
     border-radius: 10px;
-    width: 400px;
+    width: 350px;
     margin: auto;
     text-align: center;
     /* Ajout de l'ombre */
@@ -184,7 +184,7 @@ body {
 }
 /* Formulaire */
 #formulaire form {
-    max-width: 400px;
+    max-width: 350px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -212,6 +212,7 @@ body {
     border: 1px solid #e41e0f;
     cursor: pointer;
     font-weight: bold;
+    font-size: 14px;
 }
 
 #formulaire button:hover {
@@ -242,3 +243,4 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
