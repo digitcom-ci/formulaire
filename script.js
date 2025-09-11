@@ -1,73 +1,96 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("presenceForm");
-    const confirmation = document.getElementById("confirmation");
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
+// =============================
+// COMPTE A REBOURS
+// =============================
+const countdown = document.getElementById("countdown");
 
-    let userData = {};
+// Date cible (20 septembre 2025, 09h00)
+const eventDate = new Date("September 20, 2025 09:00:00").getTime();
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
 
-        // Récupération des données du formulaire
-        userData = {
-            nom: document.getElementById("nom").value.trim(),
-            whatsapp: document.getElementById("whatsapp").value.trim(),
-            email: document.getElementById("email").value.trim(),
-            ville: document.getElementById("ville").value.trim(),
-            presence: document.getElementById("presence").value
-        };
+    if (distance < 0) {
+        countdown.innerHTML = "C’est le grand jour 🎉";
+        return;
+    }
 
-        if (!userData.presence) {
-            alert("Veuillez sélectionner votre présence !");
-            return;
-        }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        // Générer lien WhatsApp avec message pré-rempli
-        const message = `Bonjour, je confirme ma présence à l'événement KEY ABIDJAN.\n\nNom: ${userData.nom}\nWhatsApp: ${userData.whatsapp}\nEmail: ${userData.email || 'N/A'}\nVille: ${userData.ville}\nRéponse: ${userData.presence}`;
-        const phoneNumber = "2250797484729"; // Remplacer par le numéro WhatsApp officiel de réception
-        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    countdown.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
 
-        // Ouvrir WhatsApp dans un nouvel onglet
-        window.open(whatsappURL, "_blank");
 
-        // Afficher le message de confirmation avant PDF
-        form.classList.add("hidden");
-        confirmation.classList.remove("hidden");
-    });
+// =============================
+// FORMULAIRE DE PRESENCE
+// =============================
+const form = document.getElementById("presenceForm");
+const confirmationBox = document.getElementById("confirmation");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-    // Bouton Oui → Générer PDF
-    yesBtn.addEventListener("click", () => {
-        generatePDF(userData);
-        confirmation.innerHTML = "<p>Votre carte d'invitation a été générée !</p>";
-    });
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    // Bouton Non → Message simple
-    noBtn.addEventListener("click", () => {
-        confirmation.innerHTML = "<p>Merci ! Votre présence a été enregistrée.</p>";
+    const nom = document.getElementById("nom").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
+    const presence = document.getElementById("presence").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!nom || !whatsapp || !presence) {
+        alert("Veuillez remplir tous les champs obligatoires.");
+        return;
+    }
+
+    // Message vers WhatsApp
+    const text = `Bonjour, je suis *${nom}*.\n\nPrésence: ${presence}\nVille/Quartier: --\nMessage: ${message}`;
+    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
+
+    // Rediriger vers WhatsApp
+    window.open(url, "_blank");
+
+    // Afficher confirmation
+    confirmationBox.classList.remove("hidden");
+});
+
+// =============================
+// GÉNÉRATION PDF INVITATION
+// =============================
+yesBtn.addEventListener("click", () => {
+    import("https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js").then(({ jsPDF }) => {
+        const doc = new jsPDF();
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(22);
+        doc.text("💍 Invitation Officielle 💍", 20, 30);
+
+        doc.setFontSize(16);
+        doc.text("Adam & Eve se diront OUI !", 20, 50);
+        doc.text("📅 Samedi 20 Septembre 2025", 20, 70);
+        doc.text("⛪ Eglise Saint Jean, Abidjan", 20, 90);
+        doc.text("🍽 Diner : 20h30 - Abidjan", 20, 110);
+
+        doc.setFontSize(12);
+        doc.text("Dress Code : Chic & Élégant", 20, 130);
+
+        doc.setFontSize(10);
+        doc.text("Merci de célébrer ce moment unique avec nous 💖", 20, 160);
+
+        doc.save("Invitation_Adam_Eve.pdf");
     });
 });
 
-// Fonction pour générer PDF via jsPDF
-function generatePDF(data) {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
+noBtn.addEventListener("click", () => {
+    confirmationBox.innerHTML = "<p>Merci ! À très bientôt 🎉</p>";
+});
 
-    doc.setFontSize(22);
-    doc.text("Carte d'invitation", 20, 30);
-    doc.setFontSize(16);
 
-    doc.text(`Nom: ${data.nom}`, 20, 50);
-    doc.text(`WhatsApp: ${data.whatsapp}`, 20, 60);
-    if (data.email) doc.text(`Email: ${data.email}`, 20, 70);
-    if (data.ville) doc.text(`Ville: ${data.ville}`, 20, 80);
-    doc.text(`Réponse: ${data.presence}`, 20, 90);
-
-    doc.text("Événement: KEY ABIDJAN Business Circle", 20, 110);
-    doc.text("Date: Samedi 20 Septembre 2025", 20, 120);
-    doc.text("Heure: 09h00", 20, 130);
-    doc.text("Lieu: Abidjan, Côte d'Ivoire", 20, 140);
-
-    doc.save(`Carte_${data.nom.replace(/\s+/g, "_")}.pdf`);
-}
-
+// =============================
+// FIXER LE TEXTAREA
+// =============================
+const textarea = document.getElementById("message");
+textarea.style.resize = "none"; // empêche le redimensionnement
+textarea.style.height = "100px"; // fixe une hauteur

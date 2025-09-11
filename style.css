@@ -30,17 +30,42 @@ body {
 }
 
 #cover .overlay h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-family: "Lavishly Yours", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #cover .overlay h3 {
-    margin: 10px 0;
+    margin: 20px 0;
     font-weight: normal;
 }
 
 #cover .overlay p {
-    margin: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+}
+
+#message {
+  width: 320px;
+  min-height: 100px;
+  max-height: 100px;
+  resize: none; /* empêche de tirer la zone */
+  padding: 10px;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: auto;
+}
+
+#countdown {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 2px;
 }
 
 .arrow i {
@@ -62,10 +87,24 @@ body {
     text-align: center;
 }
 
+#description h2 {
+    font-family: "Lavishly Yours", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+}
+
 #infos {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+#infos h2 {
+    font-family: "Lavishly Yours", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
 }
 
 #infos .card {
@@ -88,8 +127,8 @@ body {
 
 
 #infos .card i {
-    font-size: 2rem;
-    color: #4CAF50;
+    font-size: 1.5rem;
+    color: #e41e0f;
     margin-bottom: 10px;
 }
 
@@ -99,7 +138,7 @@ body {
     margin-bottom: 10px;
 }
 
-#infos .card p {
+#infos .card P {
     font-size: 1rem;
     color: #000;
     margin-bottom: 10px;
@@ -109,17 +148,24 @@ body {
 }
 
 .team {
-    width: 350px;
+    width: 400px;
     margin: auto;
-    height: 300px;
+    height: auto;
     border-radius: 8px;
 }
 
+#localisation h2 {
+    font-family: "Lavishly Yours", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+}
+
 #formulaire .info {
-    background: rgba(255, 25, 25, 0.5);
+    background: #e41e0f;
     padding: 20px;
     border-radius: 10px;
-    width: 350px;
+    width: 400px;
     margin: auto;
     text-align: center;
     /* Ajout de l'ombre */
@@ -127,11 +173,18 @@ body {
     transition: transform 0.3s, box-shadow 0.3s;
     font-weight: 300;
     font-style: italic;
+    color: #fff;
 }
 
+#formulaire h2{
+    font-family: "Lavishly Yours", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 3rem;
+}
 /* Formulaire */
 #formulaire form {
-    max-width: 350px;
+    max-width: 400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -148,41 +201,44 @@ body {
 
 #formulaire input, #formulaire button {
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 20px;
     border-radius: 7px;
     border: 1px solid #c0bfbf;
 }
 
 #formulaire button {
-    background: #4CAF50;
+    background: #e41e0f;
     color: #fff;
-    border: none;
+    border: 1px solid #e41e0f;
     cursor: pointer;
+    font-weight: bold;
 }
 
 #formulaire button:hover {
-    background: #45a049;
+    background: #FFF;
+    color: #e41e0f;
+    border: 1px solid #e41e0f;
 }
 label {
     text-align: left;
     font-size: 14px;
+    margin: 10px 20px;  
 }
 select {
-    width: 100%;
+    width: 320px;
     padding: 10px;
     margin-top: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
+    margin: 0px 20px;  
 }
 .hidden { display: none; }
 
 /* Footer */
 footer {
-    background: #222;
+    background: #e41e0f;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
-
-
