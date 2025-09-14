@@ -4,7 +4,7 @@
 const countdown = document.getElementById("countdown");
 
 // Date cible (18 décembre 2025, 09h00)
-const eventDate = new Date("December 18, 2025 09:00:00").getTime();
+const eventDate = new Date("December 19, 2025 20:00:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -100,3 +100,4 @@ if (textarea) {
     textarea.style.resize = "none"; // empêche le redimensionnement
     textarea.style.height = "100px"; // fixe une hauteur
 }
+
