@@ -3,26 +3,31 @@
 // =============================
 const countdown = document.getElementById("countdown");
 
-// Date cible (20 septembre 2025, 09h00)
-const eventDate = new Date("September 20, 2025 09:00:00").getTime();
+// Date cible (18 décembre 2025, 09h00)
+const eventDate = new Date("December 18, 2025 09:00:00").getTime();
 
-setInterval(() => {
+function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
 
-    if (distance < 0) {
+    if (distance <= 0) {
         countdown.innerHTML = "C’est le grand jour 🎉";
         return;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Calcul approximatif des mois (30 jours) et des autres unités
+    const totalMinutes = Math.floor(distance / (1000 * 60));
+    const months = Math.floor(totalMinutes / (60 * 24 * 30)); // 1 mois = 30 jours
+    const days = Math.floor((totalMinutes % (60 * 24 * 30)) / (60 * 24));
+    const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+    const minutes = totalMinutes % 60;
 
-    countdown.innerHTML = `${days}j ${hours}h ${minutes}m ${seconds}s`;
-}, 1000);
+    countdown.innerHTML = `${months}m ${days}j ${hours}h ${minutes}min`;
+}
 
+// Mise à jour immédiate et toutes les minutes
+updateCountdown();
+setInterval(updateCountdown, 1000 * 60);
 
 // =============================
 // FORMULAIRE DE PRESENCE
@@ -87,10 +92,11 @@ noBtn.addEventListener("click", () => {
     confirmationBox.innerHTML = "<p>Merci ! À très bientôt 🎉</p>";
 });
 
-
 // =============================
 // FIXER LE TEXTAREA
 // =============================
 const textarea = document.getElementById("message");
-textarea.style.resize = "none"; // empêche le redimensionnement
-textarea.style.height = "100px"; // fixe une hauteur
+if (textarea) {
+    textarea.style.resize = "none"; // empêche le redimensionnement
+    textarea.style.height = "100px"; // fixe une hauteur
+}
