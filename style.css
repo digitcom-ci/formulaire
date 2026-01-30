@@ -140,7 +140,7 @@ button.loading .loader {
 .footer a {
     color: #ffffff;
     text-decoration: none;
-    margin: 0 4px;
+    margin: 0 8px;
 }
 
 .footer a:hover {
@@ -157,7 +157,7 @@ button.loading .loader {
 }
 
 .footer-contact i {
-    margin-right: 6px;
+    margin-right: 3px;
 }
 
 .footer-social {
