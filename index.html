@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -18,9 +18,6 @@
             emailjs.init("PUBLIC_KEY_ICI"); // Remplace par ta clé EmailJS
         })();
     </script>
-
-    <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY_ICI"></script>
 </head>
 <body>
 
@@ -42,20 +39,19 @@
     <div class="form-card fade-up" style="animation-delay:0.2s">
         <h2>Télécharger le document</h2>
 
-<form id="downloadForm">
-    <input type="text" id="nom" placeholder="Votre nom" required>
-    <input type="tel" id="numero" placeholder="Votre numéro" required>
-    <input type="text" id="entreprise" placeholder="Entreprise (optionnel)">
-    <input type="email" id="email" placeholder="Email (optionnel)">
-    <button type="submit">📄 Télécharger le document</button>
-</form>
-
+        <form id="downloadForm">
+            <input type="text" id="nom" placeholder="Votre nom" required>
+            <input type="tel" id="numero" placeholder="Votre numéro" required>
+            <input type="text" id="entreprise" placeholder="Entreprise (optionnel)">
+            <input type="email" id="email" placeholder="Email (optionnel)">
+            <button type="submit">📄 Télécharger le document</button>
+        </form>
+    </div>
 </section>
 
 <!-- SCRIPT -->
 <script src="script.js"></script>
 
-    <!-- FOOTER -->
 <!-- FOOTER -->
 <footer class="footer">
     <div class="footer-content">
