@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('downloadForm');
     const submitBtn = form.querySelector('button');
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
 
         // Désactiver le bouton pendant le traitement
@@ -35,22 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(response) {
                 console.log('Email envoyé avec succès', response);
                 showMessage('Informations envoyées ! Téléchargement en cours...', 'success');
-                
+
                 // Déclencher le téléchargement du PDF
                 const link = document.createElement('a');
-                link.href = 'document.pdf'; // Chemin vers le PDF (ajustez si nécessaire)
+                link.href = 'document.pdf'; // Chemin vers le PDF
                 link.download = 'Annexe_Fiscale_2026.pdf';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                
+
                 // Réinitialiser le formulaire
                 form.reset();
-            }, function(error) {
-.catch((error) => {
-    console.error("Erreur EmailJS :", error);
-    alert("Erreur lors de l'envoi : " + JSON.stringify(error));
-});
+            })
+            .catch(function(error) {
+                console.error("Erreur EmailJS :", error);
+                alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+            })
             .finally(function() {
                 resetButton();
             });
