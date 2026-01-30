@@ -9,7 +9,7 @@ form.addEventListener("submit", function(e) {
     button.disabled = true;
 
     grecaptcha.ready(function() {
-        grecaptcha.execute("SITE_KEY_ICI", {action: "submit"}).then(function(token) {
+        grecaptcha.execute("gq5FClY23NZd4D-T9", {action: "submit"}).then(function(token) {
 
             const params = {
                 nom: document.getElementById("nom").value,
@@ -19,7 +19,7 @@ form.addEventListener("submit", function(e) {
                 captcha: token
             };
 
-            emailjs.send("SERVICE_ID", "TEMPLATE_ID", params)
+            emailjs.send("service_40476la", "template_3a1cizm", params)
                 .then(() => {
                     successMessage.style.display = "block";
                     setTimeout(() => {
