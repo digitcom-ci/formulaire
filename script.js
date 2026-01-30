@@ -47,9 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Réinitialiser le formulaire
                 form.reset();
             }, function(error) {
-                console.error('Erreur EmailJS', error);
-                showMessage('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
-            })
+.catch((error) => {
+    console.error("Erreur EmailJS :", error);
+    alert("Erreur lors de l'envoi : " + JSON.stringify(error));
+});
             .finally(function() {
                 resetButton();
             });
