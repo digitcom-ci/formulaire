@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // Envoyer via EmailJS
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams) // Remplacez par vos IDs EmailJS
+        emailjs.send('service_40476la', 'YOUR_TEMPLATE_ID', templateParams) // Remplacez par vos IDs EmailJS
             .then(function(response) {
                 console.log('Email envoyé avec succès', response);
                 showMessage('Informations envoyées ! Téléchargement en cours...', 'success');
