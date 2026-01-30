@@ -1,199 +1,184 @@
-/* Reset et base */
+/* RESET MOBILE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.5;
 }
 
-/* Header */
+/* HEADER */
 .top-header {
-    background: #fff;
-    padding: 20px;
+    background: #ffffff;
+    padding: 16px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 2px solid #912D7B;
 }
 
 .logo {
-    max-width: 200px;
-    height: auto;
+    width: 140px;
 }
 
-/* Hero Section */
+/* HERO */
 .hero {
-    background: url('https://via.placeholder.com/1920x600?text=Hero+Background') no-repeat center center/cover; /* Remplacez par une vraie image si besoin */
-    color: #fff;
+    background: linear-gradient(160deg, #912D7B, #AF9DC4);
+    color: #ffffff;
+    padding: 60px 16px;
     text-align: center;
-    padding: 100px 20px;
-    position: relative;
-}
-
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
+    opacity: 0.95;
 }
 
-/* Form Section */
+/* FORM SECTION */
 .form-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
+    padding: 30px 16px;
+    background: #f8f8f8;
 }
 
 .form-card {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 500px;
-    width: 100%;
+    background: #ffffff;
+    padding: 24px 18px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-top: 4px solid #912D7B;
 }
 
 .form-card h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #007bff;
+    color: #912D7B;
+    font-size: 1.2rem;
 }
 
-#downloadForm input {
+/* INPUTS */
+form input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #7ABAC9;
+}
+
+/* BUTTON */
+form button {
+    width: 100%;
+    padding: 14px;
+    background: #912D7B;
+    color: #ffffff;
     font-size: 1rem;
-}
-
-#downloadForm button {
-    width: 100%;
-    padding: 12px;
-    background: #28a745;
-    color: #fff;
+    font-weight: 600;
     border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-#downloadForm button:hover {
-    background: #218838;
+form button:active {
+    transform: scale(0.98);
 }
 
-#downloadForm button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
+form button:hover {
+    background: #7ABAC9;
+    color: #000000;
 }
 
-/* Messages */
+/* MESSAGE */
 .message {
     margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
     text-align: center;
 }
 
-.success {
-    background: #d4edda;
-    color: #155724;
+.message.success {
+    background: #7ABAC9;
+    color: #000000;
 }
 
-.error {
-    background: #f8d7da;
-    color: #721c24;
+.message.error {
+    background: #912D7B;
+    color: #ffffff;
 }
 
-/* Footer */
+/* FOOTER */
 .footer {
-    background: #343a40;
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
+    background: #000000;
+    color: #ffffff;
+    padding: 30px 16px;
 }
 
-.footer-content p {
-    margin-bottom: 10px;
+.footer-message {
+    color: #AF9DC4;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    text-align: center;
 }
 
 .footer-contact p {
-    margin: 5px 0;
+    font-size: 0.85rem;
+    margin: 6px 0;
+    text-align: center;
 }
 
 .footer-contact a {
-    color: #007bff;
+    color: #7ABAC9;
     text-decoration: none;
 }
 
-.footer-social a {
-    color: #fff;
-    margin: 0 10px;
-    font-size: 1.5rem;
-    transition: color 0.3s;
+/* SOCIAL */
+.footer-social {
+    margin: 20px 0;
+    text-align: center;
 }
 
-.footer-social a:hover {
-    color: #007bff;
+.footer-social a {
+    color: #ffffff;
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+.footer-social a:active {
+    color: #7ABAC9;
 }
 
 .footer-copy {
-    margin-top: 20px;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    text-align: center;
 }
 
-/* Animations */
+/* SIMPLE FADE ANIMATION */
 .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.8s ease-out forwards;
+    animation: fadeUp 0.6s ease forwards;
 }
 
 @keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    .form-card {
-        padding: 20px;
     }
 }
