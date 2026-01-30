@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const numero = document.getElementById('numero').value.trim();
         const entreprise = document.getElementById('entreprise').value.trim();
         const email = document.getElementById('email').value.trim();
-
         // Validation basique
         if (!nom || !numero) {
             showMessage('Veuillez remplir les champs obligatoires (nom et numéro).', 'error');
