@@ -8,6 +8,13 @@ form.addEventListener("submit", function(e) {
     button.classList.add("loading");
     button.disabled = true;
 
+    // Télécharger le PDF immédiatement
+    const link = document.createElement("a");
+    link.href = "document.pdf"; // ton fichier PDF
+    link.download = "document.pdf";
+    link.click();
+
+    // Préparer les données
     const params = {
         nom: document.getElementById("nom").value,
         numero: document.getElementById("numero").value,
@@ -15,17 +22,16 @@ form.addEventListener("submit", function(e) {
         email: document.getElementById("email").value || "Non renseigné"
     };
 
+    // Envoyer EmailJS en arrière-plan
     emailjs.send("service_40476la", "template_3a1cizm", params)
         .then(() => {
-            successMessage.style.display = "block";
-            setTimeout(() => {
-                window.location.href = "document.pdf";
-            }, 1200);
+            if(successMessage) successMessage.style.display = "block";
         })
-        .catch(() => {
-            alert("Erreur lors de l’envoi. Réessayez.");
+        .catch((error) => {
+            console.error("Erreur EmailJS :", error);
+        })
+        .finally(() => {
             button.classList.remove("loading");
             button.disabled = false;
         });
-        
 });
