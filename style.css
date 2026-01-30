@@ -1,247 +1,184 @@
-/* Reset simple */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --violet: #912D7B;
+  --blue: #7ABAC9;
+  --black: #000;
+  --white: #fff;
 }
 
 body {
-    font-family: "Ubuntu", sans-serif;
-    line-height: 1.6;
-    color: #000;
-    background: #dadada;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f7f7;
+  color: var(--black);
 }
 
-/* Section cover */
-#cover {
-    position: relative;
-    height: 100vh;
-    background: url('images/cover.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* =========================
+   HEADER + LOGO
+   ========================= */
+.top-header {
+    background: #ffffff;        /* fond blanc */
+    padding: 12px 15px;         /* un peu d'espace autour */
+    text-align: center;          /* centré horizontalement */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); /* léger effet d'ombre */
+    position: sticky;            /* reste en haut quand on scroll */
+    top: 0;
+    z-index: 1000;
 }
 
-#cover .overlay {
-    text-align: center;
-    background: rgba(0,0,0,0.5);
-    padding: 50px;
-    color: #fff;
+.logo {
+    height: 42px;               /* taille du logo */
+    width: auto;                /* garde les proportions */
+    max-width: 80%;             /* ne dépasse jamais l'écran */
+    display: inline-block;       /* pour centrer correctement */
 }
 
-#cover .overlay h1 {
-    font-size: 3.5rem;
-    font-family: "Lavishly Yours", cursive;
-    font-weight: 400;
-    font-style: normal;
+.hero {
+  background: linear-gradient(135deg, var(--violet), var(--blue));
+  color: var(--white);
+  padding: 70px 20px;
+  text-align: center;
 }
 
-#cover .overlay h3 {
-    margin: 20px 0;
-    font-weight: normal;
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-#cover .overlay p {
-    margin-bottom: 10px;
+.hero p {
+  font-size: 18px;
 }
 
-#message {
-  width: 270px;
-  min-height: 100px;
-  max-height: 100px;
-  resize: none; /* empêche de tirer la zone */
-  padding: 10px;
-  font-family: 'Ubuntu', sans-serif;
-  border-radius: 8px;
-  font-size: 14px;
+.form-section {
+  display: flex;
+  justify-content: center;
+  margin-top: -40px;
+}
+
+.form-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.form-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--violet);
+  font-size: 22px;
+}
+
+input {
+  width: 92%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: var(--violet);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+button:disabled {
+  background: #aaa;
+}
+
+.loader {
+  display: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
   margin: auto;
 }
 
-#countdown {
-    font-size: 1.5rem;
+button.loading .btn-text {
+  display: none;
+}
+
+button.loading .loader {
+  display: block;
+}
+
+.success-message {
+  display: none;
+  margin-top: 15px;
+  text-align: center;
+  color: green;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer {
+    background: #912D7B; /* violet AFG */
+    color: #ffffff;
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.footer a:hover {
+    color: #7ABAC9; /* bleu AFG */
+}
+
+.footer-message {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.footer-contact p {
+    margin: 4px 0;
+}
+
+.footer-contact i {
+    margin-right: 6px;
+}
+
+.footer-social {
     margin: 10px 0;
-    padding: 5px 20px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+}
+
+.footer-social a {
     display: inline-block;
-    color: #fff;
-    letter-spacing: 2px;
-}
-
-.arrow i {
-    font-size: 2rem;
-    animation: bounce 2s infinite;
-    cursor: pointer;
-}
-
-/* Animation de flèche */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(10px);}
-    60% {transform: translateY(5px);}
-}
-
-/* Section description */
-#description, #infos, #localisation, #formulaire {
-    padding: 40px 20px;
-    text-align: center;
-}
-
-#description h2 {
-    font-family: "Lavishly Yours", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-}
-
-#infos {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-#infos h2 {
-    font-family: "Lavishly Yours", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-}
-
-#infos .card {
-    background: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    width: 350px;
-    margin: 10px;
-    text-align: center;
-    /* Ajout de l'ombre */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Effet hover pour dynamisme */
-#infos .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-#infos .card i {
-    font-size: 1.5rem;
-    color: #e4c40f;
-    margin-bottom: 10px;
-}
-
-#infos .card h4 {
-    font-size: 1.5rem;
-    color: #000;
-    margin-bottom: 10px;
-}
-
-#infos .card P {
-    font-size: 1rem;
-    color: #000;
-    margin-bottom: 10px;
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-}
-
-.team {
-    width: 350px;
-    margin: auto;
-    height: auto;
-    border-radius: 8px;
-}
-
-#localisation h2 {
-    font-family: "Lavishly Yours", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-}
-
-#formulaire .info {
-    background: #e4c40f;
-    padding: 20px;
-    border-radius: 10px;
-    width: 350px;
-    margin: auto;
-    text-align: center;
-    /* Ajout de l'ombre */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: transform 0.3s, box-shadow 0.3s;
-    font-weight: 300;
-    font-style: italic;
-    color: #000;
-}
-
-#formulaire h2{
-    font-family: "Lavishly Yours", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 3rem;
-}
-/* Formulaire */
-#formulaire form {
-    max-width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    margin: auto;
-    text-align: center;
-    /* Ajout de l'ombre */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-#formulaire input, #formulaire button {
-    padding: 10px;
-    margin: 10px 20px;
-    border-radius: 7px;
-    border: 1px solid #c0bfbf;
-}
-
-#formulaire button {
-    background: #e4c40f;
-    color: #fff;
-    border: 1px solid #e4c40f;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-#formulaire button:hover {
-    background: #FFF;
-    color: #e4c40f;
-    border: 1px solid #e4c40f;
-}
-label {
-    text-align: left;
-    font-size: 14px;
-    margin: 10px 20px;  
-}
-select {
-    padding: 10px;
-    margin-top: 8px;
-    border: 1px solid #ccc;
+    margin: 0 6px;
+    font-size: 18px;
+    padding: 6px;
     border-radius: 6px;
-    font-size: 14px;
-    margin: 0px 20px;  
-}
-.hidden { display: none; }
-
-/* Footer */
-footer {
-    background: #e4c40f;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
+    transition: 0.3s;
 }
 
+.footer-social a:hover {
+    color: #7ABAC9;
+    transform: scale(1.1);
+}
 
-
-
+.footer-copy {
+    margin-top: 10px;
+    font-size: 12px;
+    opacity: 0.8;
+}
