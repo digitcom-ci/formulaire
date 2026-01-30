@@ -75,5 +75,4 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = false;
         submitBtn.textContent = '📄 Télécharger le document';
     }
-    
 });
