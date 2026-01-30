@@ -27,4 +27,5 @@ form.addEventListener("submit", function(e) {
             button.classList.remove("loading");
             button.disabled = false;
         });
+        
 });
