@@ -1,37 +1,77 @@
-const form = document.getElementById("downloadForm");
-const button = form.querySelector("button");
-const successMessage = document.querySelector(".success-message");
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('downloadForm');
+    const submitBtn = form.querySelector('button');
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    button.classList.add("loading");
-    button.disabled = true;
+        // Désactiver le bouton pendant le traitement
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Traitement en cours...';
 
-    // Télécharger le PDF immédiatement
-    const link = document.createElement("a");
-    link.href = "document.pdf"; // ton fichier PDF
-    link.download = "document.pdf";
-    link.click();
+        // Récupérer les valeurs
+        const nom = document.getElementById('nom').value.trim();
+        const numero = document.getElementById('numero').value.trim();
+        const entreprise = document.getElementById('entreprise').value.trim();
+        const email = document.getElementById('email').value.trim();
 
-    // Préparer les données
-    const params = {
-        nom: document.getElementById("nom").value,
-        numero: document.getElementById("numero").value,
-        entreprise: document.getElementById("entreprise").value || "Non renseignée",
-        email: document.getElementById("email").value || "Non renseigné"
-    };
+        // Validation basique
+        if (!nom || !numero) {
+            showMessage('Veuillez remplir les champs obligatoires (nom et numéro).', 'error');
+            resetButton();
+            return;
+        }
 
-    // Envoyer EmailJS en arrière-plan
-    emailjs.send("service_40476la", "template_3a1cizm", params)
-        .then(() => {
-            if(successMessage) successMessage.style.display = "block";
-        })
-        .catch((error) => {
-            console.error("Erreur EmailJS :", error);
-        })
-        .finally(() => {
-            button.classList.remove("loading");
-            button.disabled = false;
-        });
+        // Préparer les paramètres pour EmailJS
+        const templateParams = {
+            nom: nom,
+            numero: numero,
+            entreprise: entreprise || 'Non spécifié',
+            email: email || 'Non spécifié'
+        };
+
+        // Envoyer via EmailJS
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams) // Remplacez par vos IDs EmailJS
+            .then(function(response) {
+                console.log('Email envoyé avec succès', response);
+                showMessage('Informations envoyées ! Téléchargement en cours...', 'success');
+                
+                // Déclencher le téléchargement du PDF
+                const link = document.createElement('a');
+                link.href = 'document.pdf'; // Chemin vers le PDF (ajustez si nécessaire)
+                link.download = 'Annexe_Fiscale_2026.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Réinitialiser le formulaire
+                form.reset();
+            }, function(error) {
+                console.error('Erreur EmailJS', error);
+                showMessage('Erreur lors de l\'envoi. Veuillez réessayer.', 'error');
+            })
+            .finally(function() {
+                resetButton();
+            });
+    });
+
+    function showMessage(text, type) {
+        // Supprimer les anciens messages
+        const existing = document.querySelector('.message');
+        if (existing) existing.remove();
+
+        // Créer et afficher le nouveau message
+        const msg = document.createElement('div');
+        msg.className = `message ${type}`;
+        msg.textContent = text;
+        form.appendChild(msg);
+
+        // Supprimer après 5 secondes
+        setTimeout(() => msg.remove(), 5000);
+    }
+
+    function resetButton() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '📄 Télécharger le document';
+    }
 });
