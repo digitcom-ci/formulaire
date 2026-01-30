@@ -1,117 +1,90 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIVE LES MARIES</title>
+    <meta charset="UTF-8">
+    <title>AFG Consulting – Annexe Fiscale 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-hashiciestici" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("PUBLIC_KEY_ICI"); // Remplace par ta clé EmailJS
+        })();
+    </script>
 
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=SITE_KEY_ICI"></script>
 </head>
 <body>
 
-<!-- Section cover -->
-<section id="cover">
-    <div class="overlay">
-        <h1>Issa Mohamed Koné & Oumou Diarra</h1>
-        <h3><strong>se diront Oui !</strong></h3>
-        <p>plus que</p>
-        <!-- Compte à rebours -->
-        <div id="countdown"></div>
-        <p>Jusqu'au grand jour !</p>
-        <p>Défilez vers le bas pour Confirmer votre présence</p>
-        <div class="arrow">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+<!-- HEADER + LOGO -->
+<header class="top-header">
+    <img src="logo.png" alt="AFG Consulting" class="logo">
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero fade-up">
+    <div class="hero-content">
+        <h1>ANNEXE FISCALE 2026</h1>
+        <p>Fiches explicatives et pratiques pour <strong>Chefs d’Entreprise</strong></p>
     </div>
 </section>
 
-<!-- Section description -->
-<section id="description">
-    <h2>Notre méssage</h2>
-    <p>
-        Deux âmes, deux cœurs, une promesse pour la vie…
-Issa Mohamed & Oumou s’uniront devant Dieu et leurs proches pour célébrer l’amour et l’éternité.
-Ce jour unique marquera le début d’une nouvelle histoire, et nous serons honorés de vous compter parmi nous pour partager cette joie.
-    </p>
-    <br>
-    <img src="images/team.jpg" alt="team" class="team">
-</section>
+<!-- FORMULAIRE -->
+<section class="form-section">
+    <div class="form-card fade-up" style="animation-delay:0.2s">
+        <h2>Télécharger le document</h2>
 
-<!-- Section infos -->
-<section id="infos">
-    <h2>Infos du diner</h2>
-    <div class="card">
-        <i class="fas fa-clock"></i><i class="fa-solid fa-wine-glass"></i>
-        <h4>Diner</h4>
-        <p>Vendredi 19 Décembre 2025 <br> 20 h 00</p>
-        <p>Radisson Collection Hotel, Bamako</p>
+        <form id="downloadForm">
+            <input type="text" id="nom" placeholder="Votre nom" required>
+            <input type="tel" id="numero" placeholder="Votre numéro" required>
+            <input type="text" id="entreprise" placeholder="Nom de l’entreprise (optionnel)">
+            <input type="email" id="email" placeholder="Email (optionnel)">
+
+            <button type="submit">
+                <span class="btn-text">Télécharger le document</span>
+                <span class="loader"></span>
+            </button>
+        </form>
+
+        <p class="success-message">✅ Téléchargement réussi. Merci pour votre confiance.</p>
     </div>
 </section>
 
-<!-- Section localisation -->
-<section id="localisation">
-    <h2>Localisation</h2>
-    <p><strong>Adresse pour le diner : </strong> Radisson Collection Hotel, Bamako</p>
-    <div id="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.2883177509602!2d-8.0147765!3d12.629081099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe51cc5a90ddeafb%3A0x226b3c69fb7d50cf!2sRadisson%20Collection%20Hotel%2C%20Bamako!5e0!3m2!1sfr!2sci!4v1757871565795!5m2!1sfr!2sci" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <br>
-</section>
-
-<!-- Section formulaire -->
-<section id="formulaire">
-    <div class="info">
-        <p><strong>Confirmer votre presence au diner</strong><br>
-            <i class="fas fa-info-circle"></i> Après confirmation, vous serez rediriger automatiquement vers whatsapp. Veuillez cliquer sur 
-            "envoyer" pour validation. <br> Après confirmation, vous recevrez votre invitation numérique. <br>
-            Veuillez ne la communiquer a personne.
-        </p>
-    </div>
-    <br>
-    <br>
-    <h2>Confirmez votre présence</h2>
-    <form id="presenceForm">
-        <input type="text" id="nom" placeholder="Nom et prenom" required>
-        <input type="text" id="whatsapp" placeholder="Numéro WhatsApp" required>
-        <label for="presence">Votre présence</label>
-        <select name="presence" id="presence" required>
-            <option value="">-- Sélectionnez un choix --</option>
-            <option value="je serai présent(e)">Je serai présent(e)</option>
-            <option value="je ne pourrai pas venir">Je ne pourrais pas venir</option>
-        </select>
-        <br>
-        <label for="message">Message</label>
-        <textarea name="message" id="message"></textarea>
-
-        <button type="submit">Confirmer via Whatsapp</button>
-    </form>
-    <div id="confirmation" class="hidden">
-        <p>Merci ! Voulez-vous recevoir votre carte d'invitation maintenant ?</p>
-        <button id="yesBtn">Oui</button>
-        <button id="noBtn">Non</button>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>&copy; Vive les mariés Issa & Oumou</p>
-</footer>
-
-<!-- JS -->
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-message">
+                Merci de faire confiance à <strong>AFG Consulting</strong> pour vos besoins fiscaux et administratifs.
+            </p>
+
+            <div class="footer-contact">
+                <p><i class="fas fa-phone-alt"></i> +225 07 1860 6660</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:Assistance@africafinancialgroup.net">Assistance@africafinancialgroup.net</a></p>
+                <p><i class="fas fa-globe"></i> <a href="https://www.africafinancialgroup.net/contact" target="_blank">africafinancialgroup.net/contact</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Abidjan, 2 Plateaux Vallons 28 BP 1587 Abidjan 28, ABIDJAN, CI</p>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/afric.afinancialgroup" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/F8ZEvLSHomDrjN9R/?mibextid=eQY6cl" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@afg.consulting?_r=1&_t=ZS-93Ucgcf7BJs" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/company/africa-financial-group-consulting" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p class="footer-copy">© 2026 AFG Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
-
-
-
-
